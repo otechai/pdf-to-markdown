@@ -1,0 +1,672 @@
+/* ========================================
+   PDF to Markdown Converter - Styles
+   Author: Otmane Echaibi
+   Description: Clean, accessible, production-ready styles
+   ======================================== */
+
+/* ========================================
+   1. CSS Reset & Base Styles
+   ======================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+  background: linear-gradient(135deg, #1e1b4b 0%, #581c87 50%, #1e1b4b 100%);
+  min-height: 100vh;
+  color: #fff;
+  padding: 2rem 1rem;
+  line-height: 1.6;
+}
+
+/* ========================================
+   2. Layout Container
+   ======================================== */
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* ========================================
+   3. Header Section
+   ======================================== */
+.header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.header h1 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.header-icon {
+  font-size: clamp(2rem, 5vw, 3rem);
+}
+
+.subtitle {
+  color: #d8b4fe;
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
+  margin-bottom: 1rem;
+}
+
+.privacy-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(168, 85, 247, 0.2);
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
+  font-size: 0.9rem;
+  color: #d8b4fe;
+  border: 1px solid rgba(168, 85, 247, 0.3);
+}
+
+/* Pulse animation for privacy indicator */
+.pulse {
+  width: 8px;
+  height: 8px;
+  background: #4ade80;
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { 
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% { 
+    opacity: 0.5;
+    transform: scale(1.1);
+  }
+}
+
+/* ========================================
+   4. Upload Area
+   ======================================== */
+.upload-area {
+  max-width: 600px;
+  margin: 0 auto;
+  border: 2px dashed rgba(168, 85, 247, 0.5);
+  border-radius: 1rem;
+  padding: 4rem 2rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: rgba(30, 27, 75, 0.3);
+}
+
+.upload-area:hover,
+.upload-area:focus {
+  border-color: #a855f7;
+  background: rgba(88, 28, 135, 0.2);
+  transform: translateY(-2px);
+  outline: none;
+}
+
+.upload-area.dragover {
+  border-color: #a855f7;
+  background: rgba(88, 28, 135, 0.3);
+  transform: scale(1.02);
+}
+
+.upload-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.upload-area h2 {
+  font-size: clamp(1.2rem, 3vw, 1.5rem);
+  margin-bottom: 0.5rem;
+}
+
+.upload-area p {
+  color: #d8b4fe;
+  font-size: 0.9rem;
+}
+
+/* ========================================
+   5. Error & Loading States
+   ======================================== */
+.error {
+  max-width: 600px;
+  margin: 1rem auto;
+  padding: 1rem 1.5rem;
+  background: rgba(239, 68, 68, 0.2);
+  border: 1px solid rgba(239, 68, 68, 0.5);
+  border-radius: 0.5rem;
+  color: #fecaca;
+  display: none;
+  animation: slideIn 0.3s ease;
+}
+
+.error.show {
+  display: block;
+}
+
+.error::before {
+  content: '⚠️ ';
+  margin-right: 0.5rem;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.loading {
+  text-align: center;
+  display: none;
+  padding: 3rem;
+  animation: fadeIn 0.3s ease;
+}
+
+.loading.show {
+  display: block;
+}
+
+.loading-tip {
+  color: #d8b4fe;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+
+.spinner {
+  width: 4rem;
+  height: 4rem;
+  border: 4px solid rgba(168, 85, 247, 0.3);
+  border-top-color: #a855f7;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 1rem;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ========================================
+   6. Results Section
+   ======================================== */
+.results {
+  display: none;
+  animation: fadeIn 0.3s ease;
+}
+
+.results.show {
+  display: block;
+}
+
+/* Action Bar */
+.action-bar {
+  background: rgba(30, 41, 59, 0.5);
+  backdrop-filter: blur(10px);
+  padding: 1rem 1.5rem;
+  border-radius: 1rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  border: 1px solid rgba(100, 116, 139, 0.3);
+}
+
+.file-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.file-stats {
+  color: #d8b4fe;
+  font-size: 0.85rem;
+  font-weight: normal;
+}
+
+.actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+/* ========================================
+   7. Buttons
+   ======================================== */
+button {
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: inherit;
+}
+
+button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+button:focus {
+  outline: 2px solid #a855f7;
+  outline-offset: 2px;
+}
+
+.btn-primary {
+  background: #7c3aed;
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: #6d28d9;
+}
+
+.btn-secondary {
+  background: #334155;
+  color: #fff;
+}
+
+.btn-secondary:hover {
+  background: #475569;
+}
+
+/* ========================================
+   8. Content Grid & Panels
+   ======================================== */
+.content-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+@media (max-width: 1024px) {
+  .content-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.panel {
+  background: rgba(30, 41, 59, 0.5);
+  backdrop-filter: blur(10px);
+  border-radius: 1rem;
+  overflow: hidden;
+  border: 1px solid rgba(100, 116, 139, 0.3);
+}
+
+.panel-header {
+  background: rgba(51, 65, 85, 0.5);
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid rgba(100, 116, 139, 0.3);
+  font-weight: 500;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.panel-hint {
+  font-size: 0.8rem;
+  color: #d8b4fe;
+  font-weight: normal;
+}
+
+.panel-content {
+  padding: 0;
+  height: 600px;
+  overflow-y: auto;
+}
+
+/* Custom scrollbar */
+.panel-content::-webkit-scrollbar {
+  width: 10px;
+}
+
+.panel-content::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.5);
+}
+
+.panel-content::-webkit-scrollbar-thumb {
+  background: rgba(168, 85, 247, 0.5);
+  border-radius: 5px;
+}
+
+.panel-content::-webkit-scrollbar-thumb:hover {
+  background: rgba(168, 85, 247, 0.7);
+}
+
+/* ========================================
+   9. Markdown Editor
+   ======================================== */
+#markdownEditor {
+  width: 100%;
+  height: 100%;
+  background: rgba(15, 23, 42, 0.5);
+  color: #e2e8f0;
+  border: none;
+  font-family: 'Courier New', 'Consolas', 'Monaco', monospace;
+  font-size: 0.9rem;
+  padding: 1.5rem;
+  resize: none;
+  outline: none;
+  line-height: 1.6;
+}
+
+#markdownEditor::placeholder {
+  color: rgba(226, 232, 240, 0.3);
+}
+
+/* ========================================
+   10. Preview Styles
+   ======================================== */
+#preview {
+  color: #e2e8f0;
+  line-height: 1.7;
+  padding: 1.5rem;
+}
+
+#preview h1 {
+  font-size: 2rem;
+  margin: 1.5rem 0 1rem;
+  color: #fff;
+  border-bottom: 2px solid rgba(168, 85, 247, 0.3);
+  padding-bottom: 0.5rem;
+}
+
+#preview h2 {
+  font-size: 1.5rem;
+  margin: 1.25rem 0 0.75rem;
+  color: #fff;
+}
+
+#preview h3 {
+  font-size: 1.25rem;
+  margin: 1rem 0 0.5rem;
+  color: #fff;
+}
+
+#preview h4, #preview h5, #preview h6 {
+  margin: 0.75rem 0 0.5rem;
+  color: #d8b4fe;
+}
+
+#preview p {
+  margin-bottom: 1rem;
+}
+
+#preview ul, #preview ol {
+  margin: 1rem 0 1rem 2rem;
+}
+
+#preview li {
+  margin-bottom: 0.5rem;
+}
+
+#preview hr {
+  border: none;
+  border-top: 1px solid rgba(168, 85, 247, 0.3);
+  margin: 2rem 0;
+}
+
+#preview code {
+  background: rgba(168, 85, 247, 0.2);
+  padding: 0.2rem 0.4rem;
+  border-radius: 0.25rem;
+  font-family: 'Courier New', 'Consolas', 'Monaco', monospace;
+  font-size: 0.9em;
+}
+
+#preview pre {
+  background: rgba(15, 23, 42, 0.7);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  overflow-x: auto;
+  margin: 1rem 0;
+}
+
+#preview pre code {
+  background: none;
+  padding: 0;
+}
+
+#preview strong {
+  font-weight: 600;
+  color: #fff;
+}
+
+#preview em {
+  font-style: italic;
+  color: #d8b4fe;
+}
+
+#preview a {
+  color: #a855f7;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(168, 85, 247, 0.5);
+  transition: all 0.2s ease;
+}
+
+#preview a:hover {
+  color: #c084fc;
+  border-bottom-color: #c084fc;
+}
+
+#preview blockquote {
+  border-left: 4px solid #a855f7;
+  padding-left: 1rem;
+  margin: 1rem 0;
+  color: #d8b4fe;
+  font-style: italic;
+}
+
+#preview table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+}
+
+#preview th,
+#preview td {
+  border: 1px solid rgba(168, 85, 247, 0.3);
+  padding: 0.5rem;
+  text-align: left;
+}
+
+#preview th {
+  background: rgba(168, 85, 247, 0.2);
+  font-weight: 600;
+}
+
+/* ========================================
+   11. Footer
+   ======================================== */
+.footer {
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(168, 85, 247, 0.2);
+}
+
+.footer-content {
+  text-align: center;
+  color: #d8b4fe;
+  font-size: 0.9rem;
+}
+
+.footer-privacy {
+  margin-bottom: 1rem;
+}
+
+.footer-privacy p {
+  margin-bottom: 0.5rem;
+}
+
+.footer-links {
+  margin: 1.5rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.footer-link {
+  color: #d8b4fe;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+}
+
+.footer-link:hover {
+  color: #fff;
+  background: rgba(168, 85, 247, 0.2);
+}
+
+.footer-link:focus {
+  outline: 2px solid #a855f7;
+  outline-offset: 2px;
+}
+
+.donate-link {
+  background: rgba(251, 146, 60, 0.2);
+  color: #fbbf24;
+  font-weight: 500;
+}
+
+.donate-link:hover {
+  background: rgba(251, 146, 60, 0.3);
+  color: #fcd34d;
+}
+
+.footer-separator {
+  color: rgba(216, 180, 254, 0.5);
+}
+
+.footer-copyright {
+  margin-top: 1rem;
+  font-size: 0.85rem;
+  opacity: 0.8;
+}
+
+/* ========================================
+   12. Utility Classes
+   ======================================== */
+.hidden {
+  display: none !important;
+}
+
+/* ========================================
+   13. Responsive Design
+   ======================================== */
+@media (max-width: 768px) {
+  body {
+    padding: 1rem 0.5rem;
+  }
+
+  .upload-area {
+    padding: 3rem 1.5rem;
+  }
+
+  .action-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .file-info,
+  .actions {
+    justify-content: center;
+  }
+
+  .panel-content {
+    height: 400px;
+  }
+
+  button {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* ========================================
+   14. Accessibility Improvements
+   ======================================== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Focus visible for keyboard navigation */
+:focus-visible {
+  outline: 2px solid #a855f7;
+  outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .upload-area {
+    border-width: 3px;
+  }
+
+  button {
+    border: 2px solid currentColor;
+  }
+}
+
+/* Print styles */
+@media print {
+  body {
+    background: white;
+    color: black;
+  }
+
+  .upload-area,
+  .action-bar,
+  .footer-links,
+  button {
+    display: none;
+  }
+
+  #preview {
+    color: black;
+  }
+}

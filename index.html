@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Meta Information -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Convert PDF to Markdown instantly. 100% private, client-side processing. No uploads, no tracking. Free and open source PDF converter tool.">
+  <meta name="keywords" content="PDF to Markdown, PDF converter, markdown converter, privacy-focused, client-side conversion, free PDF tools, open source converter">
+  <meta name="author" content="Otmane Echaibi">
+  
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="PDF to Markdown - 100% Private Converter">
+  <meta property="og:description" content="Convert PDFs to Markdown instantly in your browser. Completely private, no server uploads.">
+  <meta property="og:type" content="website">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📄</text></svg>">
+  
+  <title>PDF to Markdown - 100% Private & Open Source Converter</title>
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="styles.css">
+  
+  <!-- External Libraries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.6/marked.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <!-- Header Section -->
+    <header class="header">
+      <h1>
+        <span class="header-icon" aria-hidden="true">📄</span>
+        PDF to Markdown
+      </h1>
+      <p class="subtitle">100% Private • Client-Side Processing • Open Source</p>
+      <div class="privacy-badge">
+        <div class="pulse" aria-hidden="true"></div>
+        <span>All processing happens in your browser</span>
+      </div>
+    </header>
+
+    <!-- Upload Section -->
+    <section id="uploadSection" aria-label="File upload area">
+      <div class="upload-area" id="uploadArea" role="button" tabindex="0" aria-label="Click or drop PDF file here">
+        <div class="upload-icon" aria-hidden="true">📤</div>
+        <h2>Drop your PDF here or click to browse</h2>
+        <p>Maximum file size: 50MB • Supports standard PDF files</p>
+        <input type="file" id="fileInput" accept=".pdf" class="hidden" aria-label="PDF file input">
+      </div>
+      
+      <!-- Error Display -->
+      <div class="error" id="error" role="alert" aria-live="polite"></div>
+    </section>
+
+    <!-- Loading State -->
+    <div class="loading" id="loading" aria-live="polite" aria-busy="true">
+      <div class="spinner" aria-hidden="true"></div>
+      <p>Processing your PDF...</p>
+      <p class="loading-tip">This may take a moment for large files</p>
+    </div>
+
+    <!-- Results Section -->
+    <section class="results" id="results" aria-label="Conversion results">
+      <!-- Action Bar -->
+      <div class="action-bar">
+        <div class="file-info">
+          <span aria-hidden="true">📄</span>
+          <strong id="fileName"></strong>
+          <span id="fileStats" class="file-stats"></span>
+        </div>
+        <div class="actions">
+          <button class="btn-primary" id="copyBtn" aria-label="Copy markdown to clipboard">
+            <span aria-hidden="true">📋</span> Copy
+          </button>
+          <button class="btn-secondary" id="downloadBtn" aria-label="Download markdown file">
+            <span aria-hidden="true">⬇️</span> Download
+          </button>
+          <button class="btn-secondary" id="newFileBtn" aria-label="Upload new file">
+            🔄 New File
+          </button>
+        </div>
+      </div>
+
+      <!-- Content Grid -->
+      <div class="content-grid">
+        <!-- Markdown Editor Panel -->
+        <div class="panel">
+          <div class="panel-header">
+            <span>Markdown Editor</span>
+            <span class="panel-hint">Edit as needed</span>
+          </div>
+          <div class="panel-content">
+            <textarea 
+              id="markdownEditor" 
+              spellcheck="false" 
+              aria-label="Markdown editor"
+              placeholder="Your markdown will appear here..."></textarea>
+          </div>
+        </div>
+
+        <!-- Preview Panel -->
+        <div class="panel">
+          <div class="panel-header">
+            <span>Live Preview</span>
+            <span class="panel-hint">Real-time rendering</span>
+          </div>
+          <div class="panel-content" id="preview" aria-label="Markdown preview"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-privacy">
+          <p>🔒 Your files never leave your device • No server uploads • Fully open source</p>
+          <p>Built with vanilla JavaScript, PDF.js, and Marked.js</p>
+        </div>
+        
+        <div class="footer-links">
+          <a href="https://github.com/otmaneechaibi" target="_blank" rel="noopener noreferrer" class="footer-link">
+            GitHub
+          </a>
+          <span class="footer-separator">•</span>
+          <a href="https://buymeacoffee.com/otmane" target="_blank" rel="noopener noreferrer" class="footer-link donate-link">
+            ☕ Buy me a coffee
+          </a>
+          <span class="footer-separator">•</span>
+          <a href="mailto:sudotoo@protonmail.com" class="footer-link">
+            Contact
+          </a>
+        </div>
+        
+        <div class="footer-copyright">
+          <p>&copy; <span id="currentYear"></span> Otmane Echaibi • Making the internet a better place</p>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Main Application Script -->
+  <script src="app.js"></script>
+</body>
+</html>
